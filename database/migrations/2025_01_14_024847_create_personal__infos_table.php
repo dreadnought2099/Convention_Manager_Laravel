@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -11,14 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('personal__infos', function (Blueprint $table) {
+
+        DB::statement('PRAGMA foreign_keys = ON');
+
+        Schema::create('personal_infos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
             $table->string('address', 100);
-            $table->string('phone',15);
+            $table->string('phone', 15);
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('personal__infos');
+        Schema::dropIfExists('personal_infos');
     }
 };

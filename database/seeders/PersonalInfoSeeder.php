@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Factories\PersonalInfoFactory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\PersonalInfo;
 
@@ -14,6 +12,6 @@ class PersonalInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        PersonalInfoFactory::factory()->count(10)->create();
+        PersonalInfo::factory()->count(10)->create(); // Creates 10 records for PersonalInfo
     }
 }

@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Participations;
 
 class ParticipationsSeeder extends Seeder
 {
@@ -12,9 +12,6 @@ class ParticipationsSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([
-        //     ConventionsSeeder::class, 
-        //     ParticipationsSeeder::class,
-        // ]);
+        Participations::factory()->count(10)->create(); // This will seed 10 participations
     }
 }

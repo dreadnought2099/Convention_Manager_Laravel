@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('participations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('convention_id')->constrained()->onDelete('cascade');
-            $table->string('type')->nullable(); 
-            $table->string('remarks');
+            $table->string('type')->nullable(); // If you want this to be nullable
+            $table->string('remarks'); // Consider length if necessary
             $table->timestamps();
         });
     }
